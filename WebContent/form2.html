@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+
+ <!-- Material Design Lite -->
+    <script src="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.min.js"></script>
+    <link rel="stylesheet" href="https://storage.googleapis.com/code.getmdl.io/1.0.0/material.indigo-pink.min.css">
+    <!-- Material Design icon font -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <script src="http://code.jquery.com/jquery-2.2.2.min.js"></script>
+    <style>
+    /**
+ * EFFECT CODE
+ */
+.ripple{
+  overflow:hidden;
+  position: relative;
+  box-sizing: border-box;
+  transform: translate3d(0, 0, 0);
+  user-select: none;
+}
+
+.ripple-effect{
+  position: absolute;
+  border-radius: 50%;
+  background-color: rgba(255,255,255,0.5);
+  user-select: none;
+  pointer-events: none;
+  padding: 0;
+  margin: 0;
+  opacity: 0.6;
+  transform: translate3d(-50%,-50%,0);
+}
+
+/**
+ * DEMO CODE
+ */
+
+h1 {
+  font-size: 20px;
+  line-height: 20px;
+  padding: 20px;
+  margin: 0; 
+  color: #efefef;
+  user-select: none;
+}
+
+span {
+  display: inline-block;
+  padding: 20px;
+  color: #eee;
+  cursor: pointer;
+  letter-spacing: 0.7px;
+  user-select: none;
+  transition: box-shadow .4s;
+  box-shadow: 0px 1px 4px transparent;
+  margin: 20px;
+  font-size: 15px;
+
+  &:hover {
+    box-shadow: 0px 1px 4px rgba(0,0,0,0.8);
+  }
+  
+  &:active {
+    transition: .2s;
+    box-shadow: 0px 1px 4px transparent;
+  }
+}
+
+.b1 {
+  background-color: #342F86;
+}
+
+.b2 {
+  background-color: #2B2745;
+}
+
+.b3 {
+  background-color: #2E4518;
+}
+
+.b4 {
+  background-color: #2980b9;
+}
+
+
+////////////////////////////
+// DEMO CODE 
+///////////////////////////
+body {
+  background-color: #1a1a1a;
+  color: #fefefe;
+  font-family: 'Ubuntu';
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 1.3em;
+  line-height: 2;
+  font-weight: 300;
+  text-rendering: optimizeLegibility;
+  text-align: left;
+}
+
+.container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@import url(http://fonts.googleapis.com/css?family=Ubuntu:300);
+
+a { 
+  text-decoration: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  text-align: right;
+  color: #eee;
+  font-size: 15px;
+  line-height: 15px;
+}
+    
+    
+    </style>
+    
+    
+    <script type="text/javascript">
+    
+    $(document).on('click', '.ripple', function(e) {
+    	  var $rippleElement = $('<span class="ripple-effect" />'),
+    	    $buttonElement = $(this),
+    	    btnOffset = $buttonElement.offset(),
+    	    xPos = e.pageX - btnOffset.left,
+    	    yPos = e.pageY - btnOffset.top,
+    	    size = parseInt(Math.min($buttonElement.height(), $buttonElement.width()) * 0.5),
+    	    animateSize = parseInt(Math.max($buttonElement.width(), $buttonElement.height()) * Math.PI);
+
+    	  $rippleElement
+    	    .css({
+    	      top: yPos,
+    	      left: xPos,
+    	      width: size,
+    	      height: size,
+
+    	      backgroundColor: $buttonElement.data("ripple-color")
+    	    })
+    	    .appendTo($buttonElement)
+    	    .animate({
+    	      width: animateSize,
+    	      height: animateSize,
+    	      opacity: 0
+    	    }, 700, function() {
+    	      $(this).remove();
+    	    });
+    	});
+    
+    
+    </script>
+</head>
+<body>
+
+
+<div class="container">
+  <section>
+    <h1>MATERIAL lite buttons with RIPPLE effect</h1>
+    <span class="ripple b1">HEYYY CLICK ME!</span>
+    <span class="ripple b2">SO, MATERIAL</span>
+    <span class="ripple b3">CAN WE NOT?</span>
+    <span class="ripple b4">I LIKE YOUR STYLE</span></section>
+
+  <section>
+    <h1>Use another ripple color</h1>
+    <span class="ripple b1" data-ripple-color="#f39c12">OH NO, DIFFERENT COLORS!?</span>
+    <span class="ripple b2" data-ripple-color="#c0392b">WTF, IT'S SO COOL</span>
+    <span class="ripple b3" data-ripple-color="#2ecc71">MIND BLOWNN</span>
+    <span class="ripple b4" data-ripple-color="#f1c40f">THANKS BABE</span></section>
+</div>
+
+<a target="_blank" href="https://twitter.com/hendrysadrak">@hendrysadrak</a>
+
+</body>
+</html>
